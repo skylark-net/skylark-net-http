@@ -1,0 +1,35 @@
+{
+  "name": "skylark-langx-xhr",
+  "version": "0.9.0",
+  "description": "The skylark JavaScript language extension library.",
+  "main": "./index",
+  "scripts": {
+    "build": "sbundle build ."
+  },
+  "homepage": "www.skylarkjs.org",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skylarklangx/skylark-langx-xhr.git"
+  },
+  "keywords": [
+    "skylark",
+    "skylarkjs",
+    "javacript",
+    "language extension"
+  ],
+  "author": "Hudaokeji Co.,Ltd",
+  "license": "MIT",
+  "bugs": "https://github.com/skylarklangx/skylark-langx/issues",
+  "dependencies": {
+    "skylark-langx-ns": "https://github.com/skylarklangx/skylark-langx-ns#master",
+    "skylark-langx-types": "https://github.com/skylarklangx/skylark-langx-types#master",
+    "skylark-langx-funcs": "https://github.com/skylarklangx/skylark-langx-funcs#master",
+    "skylark-langx-arrays": "https://github.com/skylarklangx/skylark-langx-arrays#master",
+    "skylark-langx-async": "https://github.com/skylarklangx/skylark-langx-async#master",
+    "skylark-langx-emitter": "https://github.com/skylarklangx/skylark-langx-emitter#master",
+    "skylark-langx-objects": "https://github.com/skylarklangx/skylark-langx-objects#master"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}
