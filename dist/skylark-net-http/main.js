@@ -5,5 +5,5 @@
  * @link www.skylarkjs.org
  * @license MIT
  */
-define(["./http","./Xhr"],function(n,t){return n});
+define(["./http","./Xhr","./upload"],function(n){return n});
 //# sourceMappingURL=sourcemaps/main.js.map

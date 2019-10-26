@@ -1,6 +1,7 @@
 define([
 	"./http",
-	"./Xhr"
-],function(http,Xhr){
+	"./Xhr",
+	"./upload"
+],function(http){
 	return http;
 });
