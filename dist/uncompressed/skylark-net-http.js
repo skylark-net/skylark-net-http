@@ -1,5 +1,5 @@
 /**
- * skylark-langx-xhr - The skylark JavaScript language extension library.
+ * skylark-net-http - The skylark http  library.
  * @author Hudaokeji Co.,Ltd
  * @version v0.9.0
  * @link www.skylarkjs.org
@@ -86,15 +86,21 @@
 
 })(function(define,require) {
 
-define('skylark-langx-xhr/Xhr',[
+define('skylark-net-http/http',[
+  "skylark-langx-ns/ns",
+],function(skylark){
+	return skylark.attach("net.http",{});
+});
+define('skylark-net-http/Xhr',[
   "skylark-langx-ns/ns",
   "skylark-langx-types",
   "skylark-langx-objects",
   "skylark-langx-arrays",
   "skylark-langx-funcs",
   "skylark-langx-async/Deferred",
-  "skylark-langx-emitter/Evented"
-],function(skylark,types,objects,arrays,funcs,Deferred,Evented){
+  "skylark-langx-emitter/Evented",
+  "./http"
+],function(skylark,types,objects,arrays,funcs,Deferred,Evented,http){
 
     var each = objects.each,
         mixin = objects.mixin,
@@ -442,15 +448,16 @@ define('skylark-langx-xhr/Xhr',[
         return Xhr;
     })();
 
-	return skylark.attach("langx.Xhr",Xhr);	
+	return http.Xhr = Xhr;	
 });
-define('skylark-langx-xhr/main',[
+define('skylark-net-http/main',[
+	"./http",
 	"./Xhr"
-],function(Xhr){
-	return Xhr;
+],function(http,Xhr){
+	return http;
 });
-define('skylark-langx-xhr', ['skylark-langx-xhr/main'], function (main) { return main; });
+define('skylark-net-http', ['skylark-net-http/main'], function (main) { return main; });
 
 
 },this);
-//# sourceMappingURL=sourcemaps/skylark-langx-xhr.js.map
+//# sourceMappingURL=sourcemaps/skylark-net-http.js.map

@@ -5,8 +5,9 @@ define([
   "skylark-langx-arrays",
   "skylark-langx-funcs",
   "skylark-langx-async/Deferred",
-  "skylark-langx-emitter/Evented"
-],function(skylark,types,objects,arrays,funcs,Deferred,Evented){
+  "skylark-langx-emitter/Evented",
+  "./http"
+],function(skylark,types,objects,arrays,funcs,Deferred,Evented,http){
 
     var each = objects.each,
         mixin = objects.mixin,
@@ -354,5 +355,5 @@ define([
         return Xhr;
     })();
 
-	return skylark.attach("langx.Xhr",Xhr);	
+	return http.Xhr = Xhr;	
 });

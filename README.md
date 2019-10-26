@@ -1,2 +1,2 @@
-# skylark-langx-xhr
-The  skylark xhr library for javascript language extension.
+# skylark-net-http
+The  skylark http library for net programming.

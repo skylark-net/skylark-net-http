@@ -1,7 +1,7 @@
 {
-  "name": "skylark-langx-xhr",
+  "name": "skylark-net-http",
   "version": "0.9.0",
-  "description": "The skylark JavaScript language extension library.",
+  "description": "The skylark http  library.",
   "main": "./index",
   "scripts": {
     "build": "sbundle build ."
@@ -9,7 +9,7 @@
   "homepage": "www.skylarkjs.org",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skylarklangx/skylark-langx-xhr.git"
+    "url": "git+https://github.com/skylark-net/skylark-net-http.git"
   },
   "keywords": [
     "skylark",
@@ -21,13 +21,13 @@
   "license": "MIT",
   "bugs": "https://github.com/skylarklangx/skylark-langx/issues",
   "dependencies": {
-    "skylark-langx-ns": "https://github.com/skylarklangx/skylark-langx-ns#master",
-    "skylark-langx-types": "https://github.com/skylarklangx/skylark-langx-types#master",
-    "skylark-langx-funcs": "https://github.com/skylarklangx/skylark-langx-funcs#master",
-    "skylark-langx-arrays": "https://github.com/skylarklangx/skylark-langx-arrays#master",
-    "skylark-langx-async": "https://github.com/skylarklangx/skylark-langx-async#master",
-    "skylark-langx-emitter": "https://github.com/skylarklangx/skylark-langx-emitter#master",
-    "skylark-langx-objects": "https://github.com/skylarklangx/skylark-langx-objects#master"
+    "skylark-langx-arrays": "git+https://github.com/skylarklangx/skylark-langx-arrays.git#master",
+    "skylark-langx-async": "git+https://github.com/skylarklangx/skylark-langx-async.git#master",
+    "skylark-langx-emitter": "git+https://github.com/skylarklangx/skylark-langx-emitter.git#master",
+    "skylark-langx-funcs": "git+https://github.com/skylarklangx/skylark-langx-funcs.git#master",
+    "skylark-langx-ns": "git+https://github.com/skylarklangx/skylark-langx-ns.git#master",
+    "skylark-langx-objects": "git+https://github.com/skylarklangx/skylark-langx-objects.git#master",
+    "skylark-langx-types": "git+https://github.com/skylarklangx/skylark-langx-types.git#master"
   },
   "engines": {
     "node": ">=0.8.0"

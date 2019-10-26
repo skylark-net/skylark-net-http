@@ -1,0 +1,1 @@
+{"version":3,"sources":["http.js"],"names":["define","skylark","attach"],"mappings":";;;;;;;AAAAA,QACE,uBACA,SAASC,GACV,OAAOA,EAAQC,OAAO","file":"../http.js","sourcesContent":["define([\r\n  \"skylark-langx-ns/ns\",\r\n],function(skylark){\r\n\treturn skylark.attach(\"net.http\",{});\r\n});"]}

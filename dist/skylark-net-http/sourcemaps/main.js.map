@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.js"],"names":["define","http","Xhr"],"mappings":";;;;;;;AAAAA,QACC,SACA,SACC,SAASC,EAAKC,GACf,OAAOD","file":"../main.js","sourcesContent":["define([\r\n\t\"./http\",\r\n\t\"./Xhr\"\r\n],function(http,Xhr){\r\n\treturn http;\r\n});"]}
