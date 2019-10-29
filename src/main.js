@@ -1,7 +1,8 @@
 define([
 	"./http",
+	"./Restful",
 	"./Xhr",
-	"./upload"
+	"./Upload"
 ],function(http){
 	return http;
 });
