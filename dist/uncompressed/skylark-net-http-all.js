@@ -2533,7 +2533,7 @@ define('skylark-net-http/Xhr',[
             // Default timeout
             timeout: 0,
             // Whether data should be serialized to string
-            processData: true,
+            processData: false,
             // Whether the browser should be allowed to cache GET responses
             cache: true,
 
@@ -2726,7 +2726,7 @@ define('skylark-net-http/Xhr',[
                         var value = headers[key];
  
                         if(key.toLowerCase() === 'content-type'){
-                            contentType = headers[hdr];
+                            contentType = value;
                         } else {
                            xhr.setRequestHeader(key, value);
                         }
@@ -2950,13 +2950,13 @@ define('skylark-net-http/Restful',[
     return Restful;
 });
 define('skylark-net-http/Upload',[
-	"skylark-langx-types",
-	"skylark-langx-objects",
-	"skylark-langx-arrays",
+    "skylark-langx-types",
+    "skylark-langx-objects",
+    "skylark-langx-arrays",
     "skylark-langx-async/Deferred",
     "skylark-langx-emitter/Evented",    
-	"./Xhr",
-	"./http"
+    "./Xhr",
+    "./http"
 ],function(types, objects, arrays, Deferred, Evented,Xhr, http){
 
     var blobSlice = Blob.prototype.slice || Blob.prototype.webkitSlice || Blob.prototype.mozSlice;
@@ -3092,9 +3092,7 @@ define('skylark-net-http/Upload',[
                 curLoadedSize = 0,
                 file = this._files[id],
                 args = {
-                    header : {
-                        "Content-Disposition" : 'attachment; filename="' + encodeURI(name) + '"',
-                        "Content-Type" : file.type || "application/octet-stream"
+                    headers : {
                     }                    
                 };
 
@@ -3116,12 +3114,27 @@ define('skylark-net-http/Upload',[
                 // will be dereferenced after data processing:
                 curUploadingSize = args.data.size;
                 // Expose the chunk bytes position range:
-                args.header["content-rrange"] = 'bytes ' + this._loaded[id] + '-' +
+                args.headers["content-range"] = 'bytes ' + this._loaded[id] + '-' +
                     (this._loaded[id] + curUploadingSize - 1) + '/' + size;
+                args.headers["Content-Type"] = "application/octet-stream";
             }  else {
                 curUploadingSize = size;
-                args.data = file;
+                var formParamName =  params.formParamName,
+                    formData = params.formData;
+
+                if (formParamName) {
+                    if (!formData) {
+                        formData = new FormData();
+                    }
+                    formData.append(formParamName,file);
+                    args.data = formData;
+    
+                } else {
+                    args.headers["Content-Type"] = file.type || "application/octet-stream";
+                    args.data = file;
+                }
             }
+
 
             var self = this;
             xhr.post(
@@ -3192,7 +3205,7 @@ define('skylark-net-http/Upload',[
          * Removes element from queue, starts upload of next
          */
         _dequeue: function(id){
-            var i = qq.indexOf(this._queue, id);
+            var i = arrays.inArray(id,this._queue);
             this._queue.splice(i, 1);
 
             var max = this._options.maxConnections;
@@ -3204,7 +3217,7 @@ define('skylark-net-http/Upload',[
         }
     });
 
-	return http.Upload = Upload;	
+    return http.Upload = Upload;    
 });
 define('skylark-net-http/main',[
 	"./http",
