@@ -75,8 +75,10 @@ define([
             // Whether the browser should be allowed to cache GET responses
             cache: true,
 
+            traditional : false,
+            
             xhrFields : {
-                withCredentials : true
+                withCredentials : false
             }
         };
 
