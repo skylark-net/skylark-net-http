@@ -75,7 +75,7 @@
   factory(define,require);
 
   if (!isAmd) {
-    var skylarkjs = require("skylark-langx/skylark");
+    var skylarkjs = require("skylark-langx-ns");
 
     if (isCmd) {
       module.exports = skylarkjs;
@@ -852,6 +852,21 @@ define('skylark-net-http/Upload',[
             }
         }
     });
+
+
+  Upload.send = function(file, options) {
+    var uploader = new Upload(options);
+    uploader.add(file);
+    return uploader.send();
+  };
+
+  Upload.sendAll = function(files,options) {
+      var uploader = new Upload(options);
+      for (var i = 0, len = files.length; i < len; i++) {
+        this.add(file[i]);
+      }
+      return uploader.send();
+  };
 
     return http.Upload = Upload;    
 });

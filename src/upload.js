@@ -266,5 +266,20 @@ define([
         }
     });
 
+
+  Upload.send = function(file, options) {
+    var uploader = new Upload(options);
+    uploader.add(file);
+    return uploader.send();
+  };
+
+  Upload.sendAll = function(files,options) {
+      var uploader = new Upload(options);
+      for (var i = 0, len = files.length; i < len; i++) {
+        this.add(file[i]);
+      }
+      return uploader.send();
+  };
+
     return http.Upload = Upload;    
 });
