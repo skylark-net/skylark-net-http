@@ -608,6 +608,9 @@ define('skylark-net-http/Upload',[
             this._options = objects.mixin({
                 debug: false,
                 url: '/upload',
+                headers : {
+
+                },
                 // maximum number of concurrent uploads
                 maxConnections: 999,
                 // To upload large files in smaller chunks, set the following option
@@ -618,7 +621,7 @@ define('skylark-net-http/Upload',[
 
                 onProgress: function(id, fileName, loaded, total){
                 },
-                onComplete: function(id, fileName){
+                onComplete: function(id, fileName,result,status,xhr){
                 },
                 onCancel: function(id, fileName){
                 },
@@ -728,8 +731,7 @@ define('skylark-net-http/Upload',[
                 curLoadedSize = 0,
                 file = this._files[id],
                 args = {
-                    headers : {
-                    }                    
+                    headers : objects.clone(options.headers)                    
                 };
 
             this._loaded[id] = this._loaded[id] || 0;
@@ -781,7 +783,7 @@ define('skylark-net-http/Upload',[
                     self._loaded[id] = self._loaded[id] + e.loaded;
                     self._options.onProgress(id, name, self._loaded[id], size);
                 }
-            }).then(function(){
+            }).then(function(result,status,xhr){
                 if (!self._files[id]) {
                     // the request was aborted/cancelled
                     return;
@@ -800,7 +802,7 @@ define('skylark-net-http/Upload',[
                     // continue with the next chunk:
                     self._send(id,params);
                 } else {
-                    self._options.onComplete(id,name);
+                    self._options.onComplete(id,name,result,status,xhr);
 
                     self._files[id] = null;
                     self._xhrs[id] = null;
@@ -856,8 +858,8 @@ define('skylark-net-http/Upload',[
 
   Upload.send = function(file, options) {
     var uploader = new Upload(options);
-    uploader.add(file);
-    return uploader.send();
+    var id = uploader.add(file);
+    return uploader.send(id,options);
   };
 
   Upload.sendAll = function(files,options) {
@@ -865,7 +867,7 @@ define('skylark-net-http/Upload',[
       for (var i = 0, len = files.length; i < len; i++) {
         this.add(file[i]);
       }
-      return uploader.send();
+      return uploader.send(options);
   };
 
     return http.Upload = Upload;    
