@@ -311,7 +311,7 @@ define('skylark-net-http/Xhr',[
                             } else if (dataType == 'json') {
                                 result = blankRE.test(result) ? null : JSON.parse(result);
                             } else if (dataType == "blob") {
-                                result = Blob([xhr.response]);
+                                result = new Blob([xhr.response]);
                             } else if (dataType == "arraybuffer") {
                                 result = xhr.reponse;
                             }
