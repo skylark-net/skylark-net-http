@@ -193,9 +193,9 @@ define([
                     xhr.overrideMimeType(mime);
                 }
 
-                //if (dataType) {
-                //    xhr.responseType = dataType;
-                //}
+                if (dataType == "blob" || dataType == "arraybuffer") {
+                    xhr.responseType = dataType;
+                }
 
                 var finish = function() {
                     xhr.onloadend = noop;
@@ -209,16 +209,16 @@ define([
                     if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304 || (xhr.status == 0 && getAbsoluteUrl(url).startsWith('file:'))) {
                         dataType = dataType || mimeToDataType(options.mimeType || xhr.getResponseHeader('content-type'));
 
-                        result = xhr.responseText;
+                        //result = xhr.responseText;
                         try {
                             if (dataType == 'script') {
-                                eval(result);
+                                eval(xhr.responseText);
                             } else if (dataType == 'xml') {
                                 result = xhr.responseXML;
                             } else if (dataType == 'json') {
-                                result = blankRE.test(result) ? null : JSON.parse(result);
+                                result = blankRE.test(xhr.responseText) ? null : JSON.parse(xhr.responseText);
                             } else if (dataType == "blob") {
-                                result = new Blob([xhr.response]);
+                                result = xhr.response; // new Blob([xhr.response]);
                             } else if (dataType == "arraybuffer") {
                                 result = xhr.reponse;
                             }
@@ -236,7 +236,7 @@ define([
                     }
                     finish();
                 };
-
+                
                 var onabort = function() {
                     if (deferred) {
                         deferred.reject(new Error("abort"),xhr.status,xhr);
