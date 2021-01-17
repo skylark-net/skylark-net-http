@@ -218,7 +218,7 @@ define([
                             } else if (dataType == 'json') {
                                 result = blankRE.test(result) ? null : JSON.parse(result);
                             } else if (dataType == "blob") {
-                                result = Blob([xhrObj.response]);
+                                result = Blob([xhr.response]);
                             } else if (dataType == "arraybuffer") {
                                 result = xhr.reponse;
                             }
