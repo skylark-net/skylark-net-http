@@ -374,7 +374,7 @@ define('skylark-net-http/Xhr',[
                 }
 
                 if(!headers || !('X-Requested-With' in headers)){
-                    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                    //xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); // del for s02
                 }
 
 
