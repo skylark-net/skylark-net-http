@@ -314,6 +314,8 @@ define('skylark-net-http/Xhr',[
                                 result = xhr.response; // new Blob([xhr.response]);
                             } else if (dataType == "arraybuffer") {
                                 result = xhr.reponse;
+                            } else if (dataType == "text") {
+                                result = xhr.responseText;
                             }
                         } catch (e) { 
                             error = e;
@@ -453,7 +455,7 @@ define('skylark-net-http/Xhr',[
         return Xhr;
     })();
 
-	return http.Xhr = Xhr;	
+    return http.Xhr = Xhr;  
 });
 define('skylark-net-http/Restful',[
     "skylark-langx-objects",

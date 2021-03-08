@@ -4,7 +4,7 @@
   "description": "The skylark http  library.",
   "main": "./index",
   "scripts": {
-    "build": "sbundle build ."
+    "build": "slib build ."
   },
   "homepage": "www.skylarkjs.org",
   "repository": {

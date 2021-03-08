@@ -221,6 +221,8 @@ define([
                                 result = xhr.response; // new Blob([xhr.response]);
                             } else if (dataType == "arraybuffer") {
                                 result = xhr.reponse;
+                            } else if (dataType == "text") {
+                                result = xhr.responseText;
                             }
                         } catch (e) { 
                             error = e;
@@ -360,5 +362,5 @@ define([
         return Xhr;
     })();
 
-	return http.Xhr = Xhr;	
+    return http.Xhr = Xhr;  
 });
