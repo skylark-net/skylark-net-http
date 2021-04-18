@@ -220,7 +220,7 @@ define([
                             } else if (dataType == "blob") {
                                 result = xhr.response; // new Blob([xhr.response]);
                             } else if (dataType == "arraybuffer") {
-                                result = xhr.reponse;
+                                result = xhr.response;
                             } else if (dataType == "text") {
                                 result = xhr.responseText;
                             }
