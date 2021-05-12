@@ -21,6 +21,7 @@
   "license": "MIT",
   "bugs": "https://github.com/skylarklangx/skylark-langx/issues",
   "dependencies": {
+    "skylark-langx-urls": "git+https://github.com/skylark-langx/skylark-langx-urls.git",
     "skylark-langx-arrays": "git+https://github.com/skylark-langx/skylark-langx-arrays.git#master",
     "skylark-langx-async": "git+https://github.com/skylark-langx/skylark-langx-async.git#master",
     "skylark-langx-emitter": "git+https://github.com/skylark-langx/skylark-langx-emitter.git#master",

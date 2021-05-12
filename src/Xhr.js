@@ -6,8 +6,9 @@ define([
   "skylark-langx-funcs",
   "skylark-langx-async/Deferred",
   "skylark-langx-emitter/Evented",
+  "skylark-langx-urls/isCrossOrigin",
   "./http"
-],function(skylark,types,objects,arrays,funcs,Deferred,Evented,http){
+],function(skylark,types,objects,arrays,funcs,Deferred,Evented,isCrossOrigin,http){
 
     var each = objects.each,
         mixin = objects.mixin,
@@ -78,7 +79,7 @@ define([
             traditional : false,
             
             xhrFields : {
-                withCredentials : false
+                ///withCredentials : false
             }
         };
 
@@ -284,7 +285,9 @@ define([
                 }
 
                 if(!headers || !('X-Requested-With' in headers)){
-                    //xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); // del for s02
+                    if (!isCrossOrigin(url)) {// for s02
+                      xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); 
+                    }
                 }
 
 
