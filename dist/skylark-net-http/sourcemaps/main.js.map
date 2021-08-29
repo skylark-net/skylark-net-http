@@ -1,1 +1,0 @@
-{"version":3,"sources":["main.js"],"names":["define","http"],"mappings":";;;;;;;AAAAA,QACC,SACA,YACA,QACA,YACC,SAASC,GACV,OAAOA","file":"../main.js","sourcesContent":["define([\r\n\t\"./http\",\r\n\t\"./Restful\",\r\n\t\"./Xhr\",\r\n\t\"./Upload\"\r\n],function(http){\r\n\treturn http;\r\n});"]}
