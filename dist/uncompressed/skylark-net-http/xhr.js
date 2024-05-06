@@ -79,7 +79,7 @@ define([
             traditional : false,
             
             xhrFields : {
-                ///withCredentials : false
+                withCredentials : true
             }
         };
 
